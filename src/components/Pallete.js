@@ -1,12 +1,17 @@
 import React from 'react'
+import ColorBox from './ColorBox'
+import "../css/pallete.css"
 
-export default function Pallete() {
+export default function Pallete(props) {
+    const colorBoxes = props.colors.map( (color) =>(
+        <ColorBox color={color} />
+    )
+)
     return (
-        <div className="Pallette">
-            <div className="Palette-colors">
-                {/* {Nav BAr Goes Here} */}
+        <div className="Pallete">
+            <div className="Pallete-colors">
+                {colorBoxes}
             </div>
-            {/* {Footer Goes Here} */}
         </div>
     )
 }
