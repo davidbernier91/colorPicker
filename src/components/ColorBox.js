@@ -3,14 +3,22 @@ import "../css/colorBoxCss.css"
 
 
 export default function ColorBox(props) {
-    
+    const {name, color} = props.color // uses descturing to grab object props from Pallete.js
+
     return (
 
-        <div style={{ background: props.color.color}}
+        <div style={{background: color}}
              className="ColorBox"
         >
-            <span>{props.color.name}</span>
-            <span>MORE</span>
+            <div className="copy-container">
+                <div className="box-content">
+                    <span>
+                        {name}
+                    </span>
+                </div>
+                <button className="copy-button">Copy</button>
+            </div>
+            <span className="see-more">More</span>     
         </div>
     )
 }
