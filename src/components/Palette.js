@@ -5,7 +5,7 @@ import "../css/palette.css"
 
 
 export default function Pallete(props) {
-    const {colors, paletteName, emoji} = props.pallete
+    const {colors, paletteName, emoji} = props.palette
     const [colorLevel, setColorLevel] = useState(500)
     const [format, setFormat] = useState("hex")
     const [snackBarOpenStatus, setSnackBarOpenStatus] = useState(false)
