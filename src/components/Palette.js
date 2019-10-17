@@ -4,16 +4,14 @@ import NavBar from './NavBar'
 import "../css/palette.css"
 
 
-
-
 export default function Pallete(props) {
-    const colors = props.pallete.colors
+    const {colors, paletteName, emoji} = props.pallete
     const [colorLevel, setColorLevel] = useState(500)
     const [format, setFormat] = useState("hex")
     const [snackBarOpenStatus, setSnackBarOpenStatus] = useState(false)
    
     const colorBoxes = colors[colorLevel].map((color)=>(
-        <ColorBox color={color} />
+        <ColorBox color={color} key={color.id} />
         )
     )
 
@@ -29,7 +27,7 @@ export default function Pallete(props) {
     
     
     return (
-        <div className="Pallete">
+        <div className="Palette">
             <NavBar 
                 level={colorLevel} 
                 changeLevel={changeLevel}
@@ -39,7 +37,11 @@ export default function Pallete(props) {
                 setSnackBarOpenStatus={setSnackBarOpenStatus}
 
             />
-            <div className="Pallete-colors">{colorBoxes}</div>
+            <div className="Palette-colors">{colorBoxes}</div>
+            <footer className="Palette-footer">
+                {paletteName}
+                <span className="emoji">{emoji}</span>
+            </footer>
         </div>
     )
 }
