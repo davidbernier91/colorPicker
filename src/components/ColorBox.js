@@ -9,10 +9,6 @@ export default function ColorBox(props) {
 
 
     const handleCopyClick = ()=>{
-            // setCopyStatus(!copyStatus);
-            // setTimeout(() => {
-            //     setCopyStatus(!copyStatus);
-            // }, 1500);
             setCopyStatus(true);
             setTimeout(() => {
                 setCopyStatus(false);
