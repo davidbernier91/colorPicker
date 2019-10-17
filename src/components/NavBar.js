@@ -1,16 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Slider from "rc-slider"
+
 import 'rc-slider/assets/index.css'
 import "../css/navBar.css"
 import { MenuItem, Select, Snackbar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 export default function NavBar(props) {
-    
-
-    const {
-        level, changeLevel, format, changeFormat,
-        snackBarOpenStatus, setSnackBarOpenStatus} = props
+    const {level, changeLevel, format, changeFormat,
+           snackBarOpenStatus, setSnackBarOpenStatus} = props
 
     const closeSnackBar=()=> setSnackBarOpenStatus(false)    
 
@@ -18,7 +17,7 @@ export default function NavBar(props) {
     return (
         <header className="Navbar">
             <div className="logo">
-                <a href="#">reactColorPicker</a>
+                <Link to="/">reactColorPicker</Link>
             </div>    
                 <div className="slider-container">
                     <span>Level: {level}</span>
