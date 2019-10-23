@@ -36,7 +36,14 @@ const styles = {
 
 function PalleteList(props) {
     const {palettes, classes} = props;
-    const renderPalletes = palettes.map(palette =>  <MiniPalettte {...palette}/>)
+
+
+    const goToPalette = (id) =>  props.history.push(`/palette/${id}`)
+
+     const renderPalletes = palettes.map(palette =>
+            <MiniPalettte {...palette} goToPalette={() => goToPalette(palette.id)}/>
+        )
+
 
     return (
         <div className={classes.root}>

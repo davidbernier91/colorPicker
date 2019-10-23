@@ -9,13 +9,13 @@ export default function Pallete(props) {
     const [colorLevel, setColorLevel] = useState(500)
     const [format, setFormat] = useState("hex")
     const [snackBarOpenStatus, setSnackBarOpenStatus] = useState(false)
-   
-    const colorBoxes = colors[colorLevel].map((color)=>(
+
+    const colorBoxes = colors[colorLevel].map(color => (
         <ColorBox color={color} key={color.id} />
         )
     )
 
-    const changeLevel = (level) => setColorLevel(level) 
+    const changeLevel = (level) => setColorLevel(level)
 
     const changeFormat = (event) => {
         setFormat(event.target.value)
@@ -24,12 +24,12 @@ export default function Pallete(props) {
             setSnackBarOpenStatus(false);
         }, 3000);
     }
-    
-    
+
+
     return (
         <div className="Palette">
-            <NavBar 
-                level={colorLevel} 
+            <NavBar
+                level={colorLevel}
                 changeLevel={changeLevel}
                 changeFormat={changeFormat}
                 format={format}
