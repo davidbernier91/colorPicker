@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Slider from "rc-slider"
-
 import 'rc-slider/assets/index.css'
 import "../css/navBar.css"
 import { MenuItem, Select, Snackbar, IconButton } from '@material-ui/core';

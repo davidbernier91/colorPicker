@@ -17,7 +17,6 @@ export default function ColorBox(props) {
 
     return (
     <CopyToClipboard text={hex}>
-       
         <div style={{background: hex}} className="ColorBox" onClick={handleCopyClick} >
             <div style={{background: hex}}  className={`copy-overlay ${copyStatus && "show"}`}/>
             <div className={`copy-msg ${copyStatus && "show"}`}>
@@ -30,8 +29,8 @@ export default function ColorBox(props) {
                 </div>
                 <button className="copy-button">Copy</button>
             </div>
-            <span className="see-more">More</span>     
+            <span className="see-more">More</span>
         </div>
-    </CopyToClipboard>        
+    </CopyToClipboard>
     )
 }
