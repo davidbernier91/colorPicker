@@ -1,6 +1,5 @@
 import React from 'react'
 import {withStyles} from '@material-ui/styles'
-// import classes from '*.module.sass'
 
 const styles = {
     root: {
@@ -47,5 +46,4 @@ function MiniPalettte(props) {
         </div>
     )
 }
-
 export default withStyles(styles)(MiniPalettte);

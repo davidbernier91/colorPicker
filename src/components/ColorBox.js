@@ -16,21 +16,21 @@ export default function ColorBox(props) {
 }
 
     return (
-    <CopyToClipboard text={hex}>
-        <div style={{background: hex}} className="ColorBox" onClick={handleCopyClick} >
-            <div style={{background: hex}}  className={`copy-overlay ${copyStatus && "show"}`}/>
-            <div className={`copy-msg ${copyStatus && "show"}`}>
-                <h1>Copied!</h1>
-                <p>{hex}</p>
-            </div>
-            <div className="copy-container">
-                <div className="box-content">
-                    <span>{name}</span>
+        <CopyToClipboard text={hex}>
+            <div style={{background: hex}} className="ColorBox" onClick={handleCopyClick} >
+                <div style={{background: hex}}  className={`copy-overlay ${copyStatus && "show"}`}/>
+                <div className={`copy-msg ${copyStatus && "show"}`}>
+                    <h1>Copied!</h1>
+                    <p>{hex}</p>
                 </div>
-                <button className="copy-button">Copy</button>
+                <div className="copy-container">
+                    <div className="box-content">
+                        <span>{name}</span>
+                    </div>
+                    <button className="copy-button">Copy</button>
+                </div>
+                <span className="see-more">More</span>
             </div>
-            <span className="see-more">More</span>
-        </div>
-    </CopyToClipboard>
+        </CopyToClipboard>
     )
 }
