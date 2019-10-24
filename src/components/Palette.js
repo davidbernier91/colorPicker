@@ -5,13 +5,19 @@ import "../css/palette.css"
 
 
 export default function Pallete(props) {
-    const {colors, paletteName, emoji} = props.palette
+    const {colors, paletteName, emoji, id} = props.palette
     const [colorLevel, setColorLevel] = useState(500)
     const [format, setFormat] = useState("hex")
     const [snackBarOpenStatus, setSnackBarOpenStatus] = useState(false)
 
     const colorBoxes = colors[colorLevel].map(color => (
-        <ColorBox color={color} key={color.id} />
+        <ColorBox
+            color={color}
+            key={color.id}
+            paletteID={id}
+            moreURL={`/palette/${id}/${color.id}`}
+            showLink={true}
+         />
         )
     )
 
