@@ -41,7 +41,11 @@ function PalleteList(props) {
     const goToPalette = (id) =>  props.history.push(`/palette/${id}`)
 
      const renderPalletes = palettes.map(palette =>
-            <MiniPalettte {...palette} goToPalette={() => goToPalette(palette.id)}/>
+            <MiniPalettte
+                {...palette}
+                goToPalette={() => goToPalette(palette.id)}
+                key={palette.id}
+            />
         )
 
 

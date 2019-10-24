@@ -54,7 +54,7 @@ function MiniPalettte(props) {
             <div className={classes.miniColor}
                  style={{backgroundColor: color.color}}
                  key={color.name}
-                 renderPalette={goToPalette}
+                 onClick={goToPalette}
             >
             </div>
         )

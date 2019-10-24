@@ -26,6 +26,11 @@ export default function App() {
         path='/palette/:id'
         render={ (routeProps) => <Palette palette={findPalette(routeProps.match.params.id)} />}
       />
+      <Route
+        exact
+        path='/palette/:paletteId/:colorId'
+        render={ ()=> <h1>Single Color Page</h1>}
+      />
     </Switch>
   </>
 )
