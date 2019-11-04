@@ -1,18 +1,22 @@
-import React,{useState} from 'react'
+import React from 'react'
 import ColorBox from './ColorBox'
 import NavBar from './NavBar'
+import useColorSlider from '../hooks/useColorSlider'
+import PaletteFooter from './PaletteFooter'
 import "../css/palette.css"
 
 
 export default function Pallete(props) {
     const {colors, paletteName, emoji, id} = props.palette
-    const [colorLevel, setColorLevel] = useState(500)
-    const [format, setFormat] = useState("hex")
-    const [snackBarOpenStatus, setSnackBarOpenStatus] = useState(false)
+    // Import custom hooks for Slider, reused in singleColorPalette
+    const {colorLevel, format, snackBarOpenStatus, setSnackBarOpenStatus,
+           changeLevel, changeFormat} = useColorSlider()
+
 
     const colorBoxes = colors[colorLevel].map(color => (
         <ColorBox
             color={color}
+            background={color[format]}
             key={color.id}
             paletteID={id}
             moreURL={`/palette/${id}/${color.id}`}
@@ -20,17 +24,6 @@ export default function Pallete(props) {
          />
         )
     )
-
-    const changeLevel = (level) => setColorLevel(level)
-
-    const changeFormat = (event) => {
-        setFormat(event.target.value)
-        setSnackBarOpenStatus(true)
-        setTimeout(() => {
-            setSnackBarOpenStatus(false);
-        }, 3000);
-    }
-
 
     return (
         <div className="Palette">
@@ -41,13 +34,12 @@ export default function Pallete(props) {
                 format={format}
                 snackBarOpenStatus={snackBarOpenStatus}
                 setSnackBarOpenStatus={setSnackBarOpenStatus}
+                showingAllColors
+
 
             />
             <div className="Palette-colors">{colorBoxes}</div>
-            <footer className="Palette-footer">
-                {paletteName}
-                <span className="emoji">{emoji}</span>
-            </footer>
+                <PaletteFooter paletteName={paletteName} emoji={emoji}/>
         </div>
     )
 }

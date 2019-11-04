@@ -33,7 +33,7 @@ export default function App() {
         render={ (routeProps) => <SingleColorPalette
                                    colorId={routeProps.match.params.colorId}
                                    palette={findPalette(routeProps.match.params.paletteId)} 
-                                   />}
+                                  />}
       />
     </Switch>
   </>
