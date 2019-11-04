@@ -3,6 +3,7 @@ import useColorSlider from '../hooks/useColorSlider'
 import ColorBox from './ColorBox'
 import NavBar from './NavBar'
 import PaletteFooter from './PaletteFooter'
+import { Link } from 'react-router-dom'
 
 
 export default function SingleColorPalette(props) {
@@ -34,7 +35,7 @@ export default function SingleColorPalette(props) {
     ))
 
     return (
-        <div className='Palette'>
+        <div className='SingleColorPalette Palette'>
             <NavBar
                 level={colorLevel}
                 changeLevel={changeLevel}
@@ -46,8 +47,15 @@ export default function SingleColorPalette(props) {
                 showingAllColors={false}
 
             />
-            <div className='Palette-colors'>{colorBoxes}</div>
-                <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji}/>
-        </div>
+            <div className='Palette-colors'>
+                {colorBoxes}
+                <div className='go-back ColorBox'>
+                    {/* <Link></Link> */}
+                    <Link to={`/palette/${palette.id}`} className='back-button'>Go Back</Link>
+                </div>
+            </div>
+
+        <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
+      </div>
     )
 }
