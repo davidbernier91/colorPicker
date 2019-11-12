@@ -28,7 +28,7 @@ export default function SingleColorPalette(props) {
     const colorBoxes = gatherShades(palette, colorId).map(color =>(
         <ColorBox
             color={color}
-            showLink={false}
+            showingFullPalette={false}
             background={color[format]}
             key={color.name}
         />

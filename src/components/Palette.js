@@ -20,7 +20,7 @@ export default function Pallete(props) {
             key={color.id}
             paletteID={id}
             moreURL={`/palette/${id}/${color.id}`}
-            showLink={true}
+            showingFullPalette
          />
         )
     )
@@ -35,8 +35,6 @@ export default function Pallete(props) {
                 snackBarOpenStatus={snackBarOpenStatus}
                 setSnackBarOpenStatus={setSnackBarOpenStatus}
                 showingAllColors
-
-
             />
             <div className="Palette-colors">{colorBoxes}</div>
                 <PaletteFooter paletteName={paletteName} emoji={emoji}/>
