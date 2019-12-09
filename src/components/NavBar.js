@@ -2,25 +2,25 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Slider from "rc-slider"
 import 'rc-slider/assets/index.css'
-import "../css/navBar.css"
 import { MenuItem, Select, Snackbar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import {withStyles} from '@material-ui/styles'
+import styles from '../styles/NavBarStyles'
 
-export default function NavBar(props) {
+function NavBar(props) {
     const {level, changeLevel, format, changeFormat,
-           snackBarOpenStatus, setSnackBarOpenStatus, showingAllColors} = props
+           snackBarOpenStatus, setSnackBarOpenStatus, showingAllColors, classes} = props
 
     const closeSnackBar=()=> setSnackBarOpenStatus(false)
 
-
     return (
-        <header className="Navbar">
-            <div className="logo">
+        <header className={classes.Navbar}>
+            <div className={classes.logo}>
                 <Link to="/">reactColorPicker</Link>
             </div>
                 { props.showingAllColors && (<div className="slider-container">
                     <span>Level: {level}</span>
-                    <div className="slider" >
+                    <div className={classes.slider} >
                         <Slider
                             defaultValue={500}
                             min={100} max={900}
@@ -30,7 +30,7 @@ export default function NavBar(props) {
                 </div>
             </div>
             )}
-            <div className="select-container">
+            <div className={classes.selectContainer}>
                 <Select value={format} onChange={changeFormat}>
                     <MenuItem value='hex'>HEX - #fffff</MenuItem>
                     <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
@@ -52,3 +52,4 @@ export default function NavBar(props) {
         </header>
     )
 }
+export default withStyles(styles)(NavBar)
