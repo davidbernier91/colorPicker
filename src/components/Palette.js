@@ -4,10 +4,37 @@ import NavBar from './NavBar'
 import useColorSlider from '../hooks/useColorSlider'
 import PaletteFooter from './PaletteFooter'
 import "../css/palette.css"
+import {withStyles} from "@material-ui/styles"
+// import classes from '*.module.css'
 
+const styles = {
+    palette:{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column"
+    },
+    colors:{
+        height:"90%"
+    },
+    // paletteFooter:{
+    //     height: "5vh",
+    //     backgroundColor: "white",
+    //     display: "flex",
+    //     justifyContent: "flex-end",
+    //     marginRight: "10px",
+    //     alignItems: "center",
+    //     fontWeight: "bold"
+    // },
+    // emoji:{
+    //     fontSize: "1.5rem",
+    //     margin: "0 1rem"
+    // }
 
-export default function Pallete(props) {
+}
+
+function Palette(props) {
     const {colors, paletteName, emoji, id} = props.palette
+    const {classes} = props
     // Import custom hooks for Slider, reused in singleColorPalette
     const {colorLevel, format, snackBarOpenStatus, setSnackBarOpenStatus,
            changeLevel, changeFormat} = useColorSlider()
@@ -26,7 +53,7 @@ export default function Pallete(props) {
     )
 
     return (
-        <div className="Palette">
+        <div className={classes.palette}>
             <NavBar
                 level={colorLevel}
                 changeLevel={changeLevel}
@@ -36,8 +63,10 @@ export default function Pallete(props) {
                 setSnackBarOpenStatus={setSnackBarOpenStatus}
                 showingAllColors
             />
-            <div className="Palette-colors">{colorBoxes}</div>
+            <div className={classes.colors}>{colorBoxes}</div>
                 <PaletteFooter paletteName={paletteName} emoji={emoji}/>
         </div>
     )
 }
+
+export default  withStyles(styles)(Palette)
