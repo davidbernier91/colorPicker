@@ -1,25 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ColorBox from './ColorBox'
 import NavBar from './NavBar'
 import useColorSlider from '../hooks/useColorSlider'
 import PaletteFooter from './PaletteFooter'
 import {withStyles} from "@material-ui/styles"
+import styles from '../styles/PaletteStyles'
 
 
-const styles = {
-    palette:{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column"
-    },
-    colors:{
-        height:"90%"
-    },
-}
+// const styles = {
+//     palette:{
+        
+//     },
+//     colors:{
+        
+//     },
+// }
 
 function Palette(props) {
     const {colors, paletteName, emoji, id} = props.palette
     const {classes} = props
+    
     // Import custom hooks for Slider, reused in singleColorPalette
     const {colorLevel, format, snackBarOpenStatus, setSnackBarOpenStatus,
            changeLevel, changeFormat} = useColorSlider()
@@ -38,7 +38,7 @@ function Palette(props) {
     )
 
     return (
-        <div className={classes.palette}>
+        <div className={classes.Palette}>
             <NavBar
                 level={colorLevel}
                 changeLevel={changeLevel}
@@ -54,4 +54,4 @@ function Palette(props) {
     )
 }
 
-export default  withStyles(styles)(Palette)
+export default withStyles(styles)(Palette)

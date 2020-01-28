@@ -20,9 +20,7 @@ function MiniPalettte(props) {
             <div className={classes.colors}>{miniColorBoxes}</div>
                 <h5 className={classes.title}>
                     {paletteName}
-                    <span className={classes.emoji}>
-                        {emoji}
-                    </span>
+                    <span className={classes.emoji}>{emoji}</span>
                 </h5>
         </div>
     )

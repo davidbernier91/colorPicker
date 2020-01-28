@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/styles'
 import styles from '../styles/PaletteListStyles'
 
 function PalleteList(props) {
-    const {palettes, classes} = props;
+    const {allPalettes, classes} = props;
     const goToPalette = (id) =>  props.history.push(`/palette/${id}`)
 
-     const renderPalletes = palettes.map(palette =>
+     const renderPalletes = allPalettes.map(palette =>
             <MiniPalette
                 {...palette}
                 goToPalette={() => goToPalette(palette.id)}

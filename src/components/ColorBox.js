@@ -17,7 +17,7 @@ function ColorBox(props) {
 
     return (
         <CopyToClipboard text={background}>
-            <div style={ {background: background}} className={classes.colorBox} onClick={handleCopyClick} >
+            <div style={ {background: background}} className={classes.ColorBox} onClick={handleCopyClick} >
                 <div style={{background: background}}  className={`${classes.copyOverlay} ${copyStatus && classes.showOverlay}`}/>
                 <div className={`${classes.copyMessage} ${copyStatus && classes.showMessage}`}>
                     <h1>Copied!</h1>

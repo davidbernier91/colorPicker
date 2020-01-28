@@ -18,7 +18,7 @@ import { ChromePicker } from "react-color";
 
 
 function NewPaletteForm(props) {
-  const {classes, palettes} = props
+  const {classes, palettes, savePalette, history} = props
   const [colors, setColors] = useState(seedColors[0].colors)
   const [openStatus, setOpenStatus] = useState(true)
   const [currentColor, setCurrentColor] = useState({color:""})
@@ -60,12 +60,25 @@ const validtionMethod=()=>{
    return addNewColorClick()
 }
 
+  const handleSubmit=()=>{
+    let newName = "TEST PAL"
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace( / /g,"-"),
+      emoji: "",
+      colors: colors
+    }
+    savePalette(newPalette)
+    props.history.push('/')
+  }
+
   return (
     <div className={classes.root}>
+      {console.log(props)}
           <PaletteFormNav
             open={openStatus}
             palettes={palettes}
-            // handleSubmit={this.handleSubmit}
+            handleSubmit={handleSubmit}
             handleDrawerOpen={handleDrawerClick}
           />
           <Drawer

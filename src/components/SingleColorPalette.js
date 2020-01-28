@@ -37,7 +37,7 @@ import styles from '../styles/PaletteStyles'
     ))
 
     return (
-        <div className={classes.palette}>
+        <div className={classes.Palette}>
             <NavBar
                 level={colorLevel}
                 changeLevel={changeLevel}
