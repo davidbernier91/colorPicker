@@ -12,6 +12,10 @@ const styles = {
   colorNameInput: {
     width: "100%",
     height: "70px"
+  },
+  errorMessage:{
+    color: "red",
+    textAlign: "center"
   }
 };
 

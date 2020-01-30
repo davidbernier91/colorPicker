@@ -18,17 +18,15 @@ export default function App() {
   }
 
   const savePalette=(newPalette)=>{
-    console.log(newPalette)
     setAllPalettes([...allPalettes, {...newPalette}])
   }
 
   return (
    <>
     <Switch>
-      {console.log(allPalettes)}
       <Route
         exact path='/palette/new'
-        render={ (routeProps)=> <NewPaletteForm savePalette={savePalette} {...routeProps}/>}
+        render={ (routeProps)=> <NewPaletteForm savePalette={savePalette} palettes={allPalettes} {...routeProps}/>}
       />
       <Route
         exact path='/palette/:paletteId/:colorId'

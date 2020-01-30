@@ -1,20 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ColorBox from './ColorBox'
 import NavBar from './NavBar'
 import useColorSlider from '../hooks/useColorSlider'
 import PaletteFooter from './PaletteFooter'
 import {withStyles} from "@material-ui/styles"
 import styles from '../styles/PaletteStyles'
-
-
-// const styles = {
-//     palette:{
-        
-//     },
-//     colors:{
-        
-//     },
-// }
 
 function Palette(props) {
     const {colors, paletteName, emoji, id} = props.palette

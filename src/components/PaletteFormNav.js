@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 // import PaletteMetaForm from "./PaletteMetaForm";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
 import Button from "@material-ui/core/Button";
 import styles from "../styles/PaletteFormNavStyles";
+import useInputState from '../hooks/useInputState'
+import PaletteFormMeta from './PaletteFormMeta'
 
 
 
@@ -24,10 +27,20 @@ function PaletteFormNav(props) {
   } = props
 
   const [formShowing, setFormShowing] = useState(false)
-  const [newPaletteName, setNewPaletteName] = useState("")
+  const {formValues, handleChange} = useInputState()
+  const [errorMessage, setErrorMessage] = useState("")
 
   const savePallete=()=>{
-    handleSubmit()
+    const newPaletteName = (formValues.newPaletteName)
+    handleSubmit(newPaletteName)
+  }
+
+  const paletteSubmitValidations =()=> {
+    console.log(formValues.newPaletteName)
+    if( palettes.find(({paletteName}) => paletteName.toLowerCase() === formValues.newPaletteName.toLowerCase())){
+      return setErrorMessage("Error: Palette name must be unique!")
+    }
+   return savePallete()
   }
 
   return (
@@ -52,6 +65,16 @@ function PaletteFormNav(props) {
             <Typography variant='h6' color='inherit' noWrap>
               Create A Palette
             </Typography>
+            <ValidatorForm>
+                <TextValidator
+                  label={"Palette Name"}
+                  value={formValues.newPaletteName}
+                  name="newPaletteName"
+                  onChange={handleChange}
+
+                />
+              </ValidatorForm>
+              <h3 className={classes.errorMessage}>{errorMessage ? errorMessage : null}</h3>
           </Toolbar>
           <div className={classes.navBtns}>
             <Link to='/'>
@@ -65,19 +88,19 @@ function PaletteFormNav(props) {
             <Button
               variant='contained'
               color='primary'
-              onClick={savePallete}
+              onClick={paletteSubmitValidations}
               className={classes.button}>
             Save
             </Button>
           </div>
         </AppBar>
-        {/* {formShowing && (
-          <PaletteMetaForm
+        {formShowing && (
+          <PaletteFormMeta
             palettes={palettes}
             handleSubmit={handleSubmit}
             hideForm={this.hideForm}
           />
-        )} */}
+        )}
       </div>
   )
 }

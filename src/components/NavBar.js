@@ -9,7 +9,7 @@ import styles from '../styles/NavBarStyles'
 
 function NavBar(props) {
     const {level, changeLevel, format, changeFormat,
-           snackBarOpenStatus, setSnackBarOpenStatus, showingAllColors, classes} = props
+           snackBarOpenStatus, setSnackBarOpenStatus, classes} = props
 
     const closeSnackBar=()=> setSnackBarOpenStatus(false)
 

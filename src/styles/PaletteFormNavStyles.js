@@ -46,6 +46,9 @@ const styles = theme => ({
       margin: "0 0.2rem",
       padding: "0.3rem"
     }
+  },
+  errorMessage :{
+    color: "red"
   }
 });
 
