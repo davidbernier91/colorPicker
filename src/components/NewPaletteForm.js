@@ -1,70 +1,32 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
+import {NewPaletteContext} from '../contexts/NewPaletteContext'
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
-import arrayMove from 'array-move'
 import styles from "../styles/NewPaletteFormStyles";
-import seedColors from"../seeds/seedColors";
-import { ChromePicker } from "react-color";
 import DraggableColorList from "./DraggableColorList";
 
 
 function NewPaletteForm(props) {
-  const {classes, palettes, savePalette, history} = props
-  const [colors, setColors] = useState(seedColors[0].colors)
-  const [openStatus, setOpenStatus] = useState(true)
-  const paletteIsFull = colors.length >= 20;
 
-  const handleDrawerClick = () => setOpenStatus(!openStatus)
+  const { clearPalette, openStatus,handleDrawerClick,
+          paletteIsFull, onSortEnd, addRandomColor} = useContext(NewPaletteContext);
 
-   const addNewColor=(newColor)=>{
-     console.log(newColor)
-    setColors([...newColor])
-  }
-
-  const clearColors=()=> setColors([])
-
-
-
-  const deleteColor=(colorName)=>{
-    setColors(colors.filter( color => color.name !== colorName))
-  }
-
-
-  const onSortEnd =({ oldIndex, newIndex })=>{
-    setColors(arrayMove(colors, oldIndex, newIndex))
-  }
-
-  const addRandomColor=()=> {
-    const allColors = palettes.map(p => p.colors).flat();
-    let rand;
-    let randomColor;
-    let isDuplicateColor = true;
-    while (isDuplicateColor) {
-      rand = Math.floor(Math.random() * allColors.length);
-      randomColor = allColors[rand];
-      isDuplicateColor = colors.some(
-        color => color.name === randomColor.name
-      );
-    }
-    setColors([...colors, randomColor] );
-  }
-
+  const {classes, history} = props
 
   return (
     <div className={classes.root}>
     <PaletteFormNav
       open={openStatus}
-      palettes={palettes}
       handleDrawerOpen={handleDrawerClick}
+      history={history}
     />
     <Drawer
       className={classes.drawer}
@@ -89,7 +51,7 @@ function NewPaletteForm(props) {
           <Button
             variant='contained'
             color='secondary'
-            onClick={clearColors}
+            onClick={clearPalette}
             className={classes.button}
           >
             Clear Palette
@@ -104,11 +66,11 @@ function NewPaletteForm(props) {
             Random Color
           </Button>
         </div>
-        <ColorPickerForm
-          paletteIsFull={paletteIsFull}
-          addNewColor={addNewColor}
-          colors={colors}
-        />
+          {/* <ColorPickerFormProvider> */}
+            <ColorPickerForm
+              paletteIsFull={paletteIsFull}
+            />
+          {/* </ColorPickerFormProvider> */}
       </div>
     </Drawer>
     <main
@@ -118,8 +80,6 @@ function NewPaletteForm(props) {
     >
       <div className={classes.drawerHeader} />
       <DraggableColorList
-        colors={colors}
-        deleteColor={deleteColor}
         axis='xy'
         onSortEnd={onSortEnd}
         distance={20}

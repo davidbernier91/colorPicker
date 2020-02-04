@@ -9,7 +9,7 @@ import styles from '../styles/PaletteStyles'
 function Palette(props) {
     const {colors, paletteName, emoji, id} = props.palette
     const {classes} = props
-    
+
     // Import custom hooks for Slider, reused in singleColorPalette
     const {colorLevel, format, snackBarOpenStatus, setSnackBarOpenStatus,
            changeLevel, changeFormat} = useColorSlider()
@@ -29,6 +29,7 @@ function Palette(props) {
 
     return (
         <div className={classes.Palette}>
+            {console.log(props)}
             <NavBar
                 level={colorLevel}
                 changeLevel={changeLevel}

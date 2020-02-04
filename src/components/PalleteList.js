@@ -1,18 +1,22 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {SeedContext} from '../contexts/SeedContext'
 import {Link} from 'react-router-dom'
 import MiniPalette from './MiniPalette'
 import { withStyles } from '@material-ui/styles'
 import styles from '../styles/PaletteListStyles'
 
 function PalleteList(props) {
-    const {allPalettes, classes} = props;
+    const {seeds} = useContext(SeedContext);
+    const {classes} = props;
     const goToPalette = (id) =>  props.history.push(`/palette/${id}`)
 
-     const renderPalletes = allPalettes.map(palette =>
+
+     const renderPalletes = seeds.map(palette =>
             <MiniPalette
                 {...palette}
                 goToPalette={() => goToPalette(palette.id)}
                 key={palette.id}
+                id={palette.id}
             />
         )
 

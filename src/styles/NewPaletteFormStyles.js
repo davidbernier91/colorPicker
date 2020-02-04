@@ -53,9 +53,6 @@ const styles = theme => ({
   },
   button: {
     width: "50%"
-  },
-  errorMessage: {
-    color: "red"
   }
 });
 

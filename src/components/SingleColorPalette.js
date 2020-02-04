@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom'
 import {withStyles} from "@material-ui/styles"
 import styles from '../styles/PaletteStyles'
 
-
-
  function SingleColorPalette(props) {
     const {colorId, palette, classes} = props
     const {colorLevel, format, snackBarOpenStatus, setSnackBarOpenStatus,
-        changeLevel, changeFormat} = useColorSlider()
+           changeLevel, changeFormat
+          } = useColorSlider()
 
 
     const gatherShades = (palette, colorToFilterBy)=>{
